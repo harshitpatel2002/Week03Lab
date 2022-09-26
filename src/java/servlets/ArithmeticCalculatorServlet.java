@@ -34,6 +34,9 @@ public class ArithmeticCalculatorServlet extends HttpServlet
         String last = request.getParameter("last");
         String calc = request.getParameter("calc");
         
+        request.setAttribute("first", first);
+        request.setAttribute("last", last);
+        
         if (first == null || first.equals("") || last == null || last.equals(""))
         {
             request.setAttribute("result", "invalid");
@@ -42,8 +45,16 @@ public class ArithmeticCalculatorServlet extends HttpServlet
             return;
         }
         
-        int fInt = Integer.parseInt(first);
-        int lInt = Integer.parseInt(last);
+        int fInt=0, lInt=0;  
+        try {
+            fInt = Integer.parseInt(first);
+            lInt = Integer.parseInt(last);
+        } catch(Exception e) {
+            request.setAttribute("result", "Please enter an integer");
+            getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp")
+            .forward(request, response);
+            return;
+        }
         
         int finalResult = 0;
         

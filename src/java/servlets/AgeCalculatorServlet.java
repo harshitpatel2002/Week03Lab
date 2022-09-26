@@ -38,7 +38,17 @@ public class AgeCalculatorServlet extends HttpServlet
         }
         
 //        Parsing the value of age to integer and then increasing it by 1
-        int ageIntVal = Integer. parseInt(age);
+        int ageIntVal=0;
+        
+        try {
+            ageIntVal = Integer. parseInt(age);
+        } catch(Exception e) {
+            request.setAttribute("ageEmpty", "Please enter an integer to calculate the age");
+            getServletContext().getRequestDispatcher("/WEB-INF/agecalculator.jsp")
+            .forward(request, response);
+            return;
+        }
+        
         ageIntVal += 1;
         
 //        Passing the age value to the jsp

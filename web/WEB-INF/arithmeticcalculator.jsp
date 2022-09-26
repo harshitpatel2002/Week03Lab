@@ -14,8 +14,8 @@
     <body>
         <h1>Arithmetic Calculator</h1>
         <form method="post" action="arithmetic">
-            First: <input type="text" value="" name="first"><br>
-            Second: <input type="text" value="" name="last"><br>
+            First: <input type="text" name="first" value="${first}" name="first"><br>
+            Second: <input type="text" name="last" value="${last}" ><br>
             <input type="submit" value="+" name="calc">
             <input type="submit" value="-" name="calc">
             <input type="submit" value="*" name="calc">
